@@ -68,17 +68,73 @@
                     <!--Prism has a problem with temporate literals as of 2022-->
                     <pre class="line-numbers"><code class="language-javascreipt">
 
-                            // Call Hello World for Prism
-                            function helloWorld(){
-                                alert("Hellow World");
+                        //get string from app page
+                        // controller function
+                        function getValue(){
+                            hideAlert(); //makes sure div id='alert' invisible on start
+                            let userString = document.getElementById('userString').value;
+                            let revString = reverseString(userString);
+                            displayString(revString);
+                        }
+                        
+                        //reverse string
+                        //logic function
+                        function reverseString(userString){
+                            let revString = []; //allow array functions
+                        
+                            for (let index = userString.length-1; index >= 0; index--) {
+                               revString += userString[index]; //pust into revString
+                                
                             }
+                            return revString;
+                        }
+                        
+                        //display result and message
+                        //View function
+                        function displayString(revString){
+                            //write to the page
+                            document.getElementById("msg").innerHTML = `Your string reversed is: ${revString}`;
+                            //show alert div
+                            document.getElementById("alert").classList.remove("invisible");
+                        }
+                        
+                        function hideAlert(){  //hide 'alert' div
+                            document.getElementById('alert').classList.add('invisible');
+                        }
+                        
+                        /********Inline script in app.html
+                         * 
+                         *   <script>
+                                document.getElementById("btnSubmit").addEventListener("click", getValue)
+                            </script>
+                            <script>
+                                document.getElementById("btnReset").addEventListener("click", hideAlert)
+                            </script>
+                         */
                          </code>
                     </pre>
                 </div>
-                <div class="col-lg-4">
-                    <p>THe Code is structured in one function.</p>
-                    <h5>Hello World!</h5>
-                    <p>Hello World is a function displaying an alert with a message of "Hello World"</p>
+                <div class="col-lg-4 pt-2"> 
+                    <h5>Rewind - Printing a Reversed String.</h5>
+                    <p>THe Code is structured in four functions.</p>
+                    <p><strong>getValue()</strong>
+                        <br>
+                        This is the controller function is getValue().
+                    </p>
+                    <p>
+                        <strong>reverseString(userString)</strong><br>
+                        This function that does the work.<br>
+                        The parameter is userString from the app page form.<br>
+                        The function returns the reversed string to the controller function.
+                    </p>
+                    <p>
+                        <strong>displayString(revSttring)</strong><br>
+                        displayString() sends the reversed string back to the app page wher it is printed out in a BS5 alert box.<br>
+                    </p>
+                    <p>
+                        <strong>hideAlert()</strong><br>
+                        hideAlert() hides the alert div by adding the BS5 'invisible' class
+                    </p>
                 </div>
             </div>
         </div>
